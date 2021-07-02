@@ -6,7 +6,6 @@ from cfg.config import authorized_users
 from cfg.config import token as teletoken
 
 bot = telebot.TeleBot(token=teletoken)
-flag = True
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2, one_time_keyboard=True)
 button1 = types.KeyboardButton('Wakeup')
 button2 = types.KeyboardButton('Shutdown')
@@ -20,15 +19,12 @@ def send_welcome(message):
 
 
 def process_select_step(message):
-    global flag
     if message.from_user.username in authorized_users:
         try:
             if message.text == 'Wakeup':
                 bot.send_message(message.chat.id, wakedown.wakeup(), parse_mode='Markdown', reply_markup=markup)
-                flag = True
             elif message.text == 'Shutdown':
                 bot.send_message(message.chat.id, wakedown.shutdown(), parse_mode='Markdown', reply_markup=markup)
-                flag = False
             elif message.text == 'About':
                 bot.send_message(message.chat.id, wakedown.about(), reply_markup=markup)
         except Exception as e:
