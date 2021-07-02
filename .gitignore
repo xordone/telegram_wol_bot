@@ -1,0 +1,5 @@
+cfg/cred.py
+.idea/*
+cfg/__pycache__*
+__pycache__/*
+log.txt
