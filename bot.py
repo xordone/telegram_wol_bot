@@ -1,12 +1,10 @@
 import telebot
 from telebot import types
-import logging
 import wakedown
 from cfg.config import authorized_users
 from cfg.config import token as teletoken
-from cfg.config import time_format
+from cfg.config import log as log
 
-logging.basicConfig(filename='log.txt', format='%(asctime)s - %(message)s', level=logging.INFO, datefmt=time_format)
 bot = telebot.TeleBot(token=teletoken)
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2, one_time_keyboard=True)
 button1 = types.KeyboardButton('Wakeup')
@@ -40,4 +38,4 @@ if __name__ == '__main__':
     try:
         bot.polling(none_stop=True)
     except Exception as e:
-        logging.log(msg=str(e), level=logging.ERROR)
+        log.exception(msg=str(e))

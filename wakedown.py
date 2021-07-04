@@ -1,11 +1,9 @@
 from wakeonlan import send_magic_packet
 from cfg.config import dst_mac
 from cfg.config import ssh
-from cfg.config import time_format
+from cfg.config import log as log
 import paramiko
-import logging
 
-logging.basicConfig(filename='log.txt', format='%(asctime)s - %(message)s', level=logging.INFO, datefmt=time_format)
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -13,7 +11,7 @@ client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 def wakeup():
     send_magic_packet(dst_mac)
-    logging.info('send magick packet')
+    log.info('send magick packet')
     return 'magick packet send'
 
 
@@ -22,7 +20,7 @@ def shutdown():
 
     # Выполнение команды
     client.exec_command('shutdown -h now')
-    logging.info('shutdown')
+    log.info('shutdown')
 
     # Читаем результат
     client.close()
@@ -33,7 +31,7 @@ def about():
     client.connect(hostname=ssh['host'], username=ssh['user'], password=ssh['secret'], port=ssh['port'])
     stdin, stdout, stderr = client.exec_command('uname -a ;uptime -p')
     data = stdout.read() + stderr.read()
-    logging.info('get about')
+    log.info('get about')
     client.close()
 
     return data
