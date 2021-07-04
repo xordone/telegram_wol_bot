@@ -2,7 +2,9 @@ import cfg.cred as cred
 import logging
 
 time_format = '%Y-%m-%d %H:%M'
-logging.basicConfig(filename='log.txt', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO, datefmt=time_format)
+logging.basicConfig(
+    filename='./log.txt', filemode='a', format='%(asctime)s:%(name)s:%(levelname)s - %(message)s',
+    level=logging.INFO, datefmt=time_format)
 log = logging.getLogger('My_Logger')
 token = cred.telegram_token
 authorized_users = cred.auth_list
