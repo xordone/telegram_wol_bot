@@ -3,7 +3,7 @@
 git clone https://github.com/xordone/telegram_wol_bot.git
 ```
 Я использую менеджер зависимостей 
-[poety](https://python-poetry.org), если вы тоже его используете то выполняем
+[poetry](https://python-poetry.org), если вы тоже его используете то выполняем
 ```
 cd telegram_wol_bot
 poetry install
