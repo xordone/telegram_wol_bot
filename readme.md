@@ -13,5 +13,26 @@ poetry install
 pip install -r requirements.txt
 ```
 
+# Запуск
+Запускаю через systemd
+создаем файл /etc/systemd/system/telegram_wol_bot.service
+```
+Unit]
+Description=TelegramBot
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 путь до файла bot.py
+
+[Install]
+WantedBy=multi-user.target
+```
+и включаем сервис
+```
+systemctl enable telegram_wol_bot.service
+```
+
+
 # PS
 Буду очень рад любому предложению или замечанию.
