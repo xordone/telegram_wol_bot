@@ -8,5 +8,5 @@ logging.basicConfig(
 log = logging.getLogger('My_Logger')
 token = cred.telegram_token
 authorized_users = cred.auth_list
-dst_mac = 'b4:2e:99:bc:c5:d6'
+dst_mac = 'b4:2e:99:bc:c5:d6'  # Меняем мак на свой!
 ssh = cred.ssh
