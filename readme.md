@@ -17,13 +17,15 @@ pip install -r requirements.txt
 Запускаю через systemd
 создаем файл /etc/systemd/system/telegram_wol_bot.service
 ```
-Unit]
+[Unit]
 Description=TelegramBot
 After=multi-user.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/python3 путь до файла bot.py
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target
